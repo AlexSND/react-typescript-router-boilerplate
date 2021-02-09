@@ -26,8 +26,8 @@ const App: React.FC = () => (
             Happy coding!
           </h1>
         </Route>
-        <Route path="/page-one" component={ ExamplePageOne } />
-        <Route path="/page-two" component={ ExamplePageTwo } />
+        <Route path="/page-one" component={ExamplePageOne} />
+        <Route path="/page-two" component={ExamplePageTwo} />
       </Switch>
     </BrowserRouter>
   </>
