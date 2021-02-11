@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const DotenvWebpack = require('dotenv-webpack');
 
 let mode = 'development';
 let target = 'web';
@@ -15,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   mode: mode,
   target: target,
-  
+
   output: {
     path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: 'images/[hash][ext][query]',
@@ -52,6 +53,7 @@ module.exports = {
   },
 
   plugins: [
+    new DotenvWebpack(),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
@@ -74,9 +76,9 @@ module.exports = {
       images: path.resolve(__dirname, 'src/images/'),
     }
   },
-  
+
   devtool: mode === 'development' ? 'source-map' : false,
-  devServer: { 
+  devServer: {
     contentBase: './dist',
     hot: true,
     historyApiFallback: true,
